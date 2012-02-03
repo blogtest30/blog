@@ -9,12 +9,26 @@ class View
 		}
 	public function header()
 		{
-		header("Content-type:text/html; charset=utf-8");
 		require PATH_TO_TEMPLATE."/header.php";
 		}
 	public function footer()
 		{
 		require PATH_TO_TEMPLATE."/footer.php";
+		}
+	public function kare($array,$field,$value,$flag=false)
+		{
+		foreach($array as $v)
+			{
+			if($v[$field]==$value)
+				{
+				if(!$flag)
+					{
+					return $v;
+					}
+				$c[]=$v;
+				}
+			}
+		return$c;
 		}
 	}
 ?>

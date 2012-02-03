@@ -1,11 +1,9 @@
 <?php
-class Chats_Controller
+class Chats_Controller extends Controller
 	{
 	function __construct($request,$TF)
 		{
-		$this->request=$request;
-		$this->TF=$TF;
-		$this->view=new View();
+		parent::__construct($request,$TF);
 		$this->array=array('users'=>$this->TF->getTable('users')->get_all(),'chats'=>$this->TF->getTable('chats')->get_all(true));
 		}
 	function all()
@@ -30,7 +28,7 @@ class Chats_Controller
 			{
 			$this->TF->getTable($this->request->get('get'))->set(array('post'=>$this->request->get('post'),'user'=>$_COOKIE["name"]));
 			}
-		header("Location:index.php?get=chats");
+		parent::redirect("index.php?get=chats");
 		}
 	}
 ?>

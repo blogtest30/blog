@@ -1,11 +1,9 @@
 <?php
-class Messages_Controller
+class Messages_Controller extends Controller
 	{
 	function __construct($request,$TF)
 		{
-		$this->request=$request;
-		$this->TF=$TF;
-		$this->view=new View();
+		parent::__construct($request,$TF);
 		$this->array=array('users'=>$this->TF->getTable('users')->get_all(),'messages'=>$this->TF->getTable('messages')->get_all(),'tags'=>$this->TF->getTable('tags')->get_all(),'messages_tags'=>$this->TF->getTable('messages_tags')->get_all());
 		}
 	function all()
@@ -55,12 +53,12 @@ class Messages_Controller
 					}
 				}
 			}
-		header("Location:index.php");
+		parent::redirect("index.php");
 		}
 	function delete()
 		{
 		$this->TF->getTable($this->request->get('get'))->delete(array('id'=>$this->request->get('message')));
-		header("Location:index.php");
+		parent::redirect("index.php");
 		}
 	}
 ?>

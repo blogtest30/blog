@@ -22,7 +22,6 @@ class mysql extends database
 			{
 			$sql.=' DESC';
 			}
-		mysql_query("SET NAMES utf8");
 		$result=mysql_query($sql);
 	    while($row=mysql_fetch_assoc($result))
 			{
@@ -51,7 +50,6 @@ class mysql extends database
 					}
 				}
 			}
-		mysql_query("SET NAMES utf8");
 		$result=mysql_query($sql);
 	    while($row=mysql_fetch_assoc($result))
 			{
@@ -65,7 +63,6 @@ class mysql extends database
 		$sql.=" INNER JOIN ".$innerj;
 		$sql.=" ON (".$on[0]."=".$on[1].")";
 		$sql.=" WHERE ".$where[0]."='".$where[1]."'";
-		mysql_query("SET NAMES utf8");
 		$result=mysql_query($sql);
 	    while($row=mysql_fetch_assoc($result))
 			{

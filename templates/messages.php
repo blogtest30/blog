@@ -12,13 +12,13 @@
 <?endif?>
 <br><br>В блоге всего <?=count($array['messages'])?> сообщение(й)
 <?foreach ($array['messages'] as $v):?>
-<?$ve=kare($array['users'],'id',$v['id_users'])?>
+<?$ve=$this->kare($array['users'],'id',$v['id_users'])?>
 <hr><table width=100%><tr><td width=100%><p><b><a href="index.php?display=get&user=<?=$ve['id']?>"><?=$ve['firstname']?> <?=$ve['lastname']?></a></b> написал(а): <?if($_COOKIE['name']===$ve['id']):?><a href="index.php?display=delete&message=<?=$v['id']?>">удалить</a><?endif?><br><br /><?=$v['message']?><br /><br />
-<?$msgtag=kare($array['messages_tags'],'id_messages',$v['id'],true)?>
+<?$msgtag=$this->kare($array['messages_tags'],'id_messages',$v['id'],true)?>
 <?if(is_array($msgtag)):?>
 Метки этого сообщения:
 <?foreach ($msgtag as $ke=>$va):?>
-<?$tag=kare($array['tags'],'id',$va['id_tags'])?>
+<?$tag=$this->kare($array['tags'],'id',$va['id_tags'])?>
 <a href="index.php?display=get&tag=<?=$tag['id']?>"><?=$tag['tagname']?></a>
 <?endforeach;?>
 <?else:?>
